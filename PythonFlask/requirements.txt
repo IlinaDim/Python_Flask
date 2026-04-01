@@ -1,0 +1,18 @@
+# file requirements.txt
+
+# Python 3 is used for this project
+# Flask is the main web framework
+Flask==2.2.5
+
+# sqlite3 is built into Python (no installation required)
+# JavaScript is client-side (no Python dependency)
+
+# Notes:
+# Flask supports:
+# - Sessions
+# - Cookies
+# - Form handling
+
+# Python version: Python 3.7 or newer
+
+

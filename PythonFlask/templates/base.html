@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--dynamic paage title (overriden by child templates)-->
+    <title>{% block title %}Ilina's Website{% endblock %}</title>
+
+    <!--link to css file in /static/ folder--!>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>My Personal Website</h1>
+
+	<!--navigation bar --!>
+        <nav>
+            <a href="/">Home</a> |
+	    <a href="/register">Register</a> |
+	    <a href="/about">About</a> |
+            <a href="/resume">Resume</a> |
+	    <a href="/contact">Contact</a> |
+	    <a href="/messages">Messages</a> |
+	    <a href="/logout">Logout</a> |
+        </nav>
+    </header>
+    <main>
+        <!--each page can inject own contect --!>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 Ilina Dimitrov</p>
+    </footer>
+</body>
+</html>
+

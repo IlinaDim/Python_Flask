@@ -1,0 +1,460 @@
+<!-- templates/about.html -->
+
+{% extends "base.html" %}
+
+{% block title %}About Me{% endblock %}
+
+{% block content %}
+
+<!-- main about section with animated entrance -->
+<div class="about-hero-section" id="aboutHero">
+    <div class="about-hero-content">
+        <h2 class="about-title">About Me</h2>
+
+<!-- mainn content section -->
+<div class="about-content-section">
+    <div class="about-text-card">
+        <p class="about-description">
+            I'm passionate about technology, learning, and solving real-world problems through code. 
+            Currently studying Computer Science at Fordham University, I'm always eager to take on 
+            new challenges and expand my skillset.
+        </p>
+        
+        <p class="about-mission">
+            My mission is to keep growing and help others grow through the tools I build. 
+            I believe in the power of continuous learning and collaborative problem-solving.
+        </p>
+    </div>
+
+    <!-- interactive hobbies section -->
+    <div class="hobbies-section" id="hobbiesSection">
+        <h3 class="hobbies-title">My Interests & Hobbies</h3>
+        <div class="hobbies-grid">
+            
+            <!-- reading hobby card -->
+            <div class="hobby-card" data-hobby="reading">
+                <div class="hobby-icon animated-icon">📚</div>
+                <h4>Reading</h4>
+                <p>Exploring surreal worlds, technologies, and themes of empathy being a core aspect to humanity</p>
+                <div class="hobby-content" id="readingContent">
+                    <div class="hobby-details">
+                        <h5>Favorite Authors:</h5>
+                        <ul>
+			    <li>Harlan Ellison - I Have No Mouth, and I Must Scream</li>
+                            <li>Toni Morrison - Beloved</li>
+			    <li>Terry Pratchett - The Long Earth</li>   
+                            <li>Philip K. Dick - Do Androids Dream?</li>    
+                        </ul>
+                        <div class="book-showcase">
+                            <div class="book-cover">📖</div>
+                            <div class="book-cover">🚀</div>
+                            <div class="book-cover">🧠</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- hiking hobby card -->
+            <div class="hobby-card" data-hobby="hiking">
+                <div class="hobby-icon animated-icon">🥾</div>
+                <h4>Hiking</h4>
+                <p>Connecting with nature and staying active</p>
+                <div class="hobby-content" id="hikingContent">
+                    <div class="hobby-details">
+                        <h5>Favorite Trails:</h5>
+                        <div class="trail-gallery">
+                            <div class="trail-item">
+                                <div class="trail-icon">🏔️</div>
+                                <span>Mountain Peaks</span>
+                            </div>
+                            <div class="trail-item">
+                                <div class="trail-icon">🌲</div>
+                                <span>Forest Paths</span>
+                            </div>
+                            <div class="trail-item">
+                                <div class="trail-icon">🌊</div>
+                                <span>Lakeside Walks</span>
+                            </div>
+                        </div>
+                        <div class="hiking-stats">
+                            <div class="stat">
+                                <span class="stat-number" data-target="25">0</span>
+                                <span class="stat-label">Trails Completed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-target="150">0</span>
+                                <span class="stat-label">Miles Hiked</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- violin hobby card -->
+            <div class="hobby-card" data-hobby="violin">
+                <div class="hobby-icon animated-icon">🎻</div>
+                <h4>Playing Violin</h4>
+                <p>Creating music and expressing creativity</p>
+                <div class="hobby-content" id="violinContent">
+                    <div class="hobby-details">
+                        <h5>Musical Journey:</h5>
+                        <div class="music-player">
+                            <div class="player-display">
+                                <div class="now-playing" id="nowPlaying">Click to play sample</div>
+                                <div class="audio-visualizer" id="audioVisualizer">
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                    <div class="bar"></div>
+                                </div>
+                            </div>
+                            <div class="player-controls">
+                                <button class="play-btn" id="playBtn">▶️</button>
+                                <button class="stop-btn" id="stopBtn">⏹️</button>
+                            </div>
+                        </div>
+                        <div class="repertoire">
+                            <h6>Favorite Pieces:</h6>
+                            <div class="piece-list">
+                                <div class="piece-item" data-piece="classical" data-url="https://www.youtube.com/watch?v=U6MjjfIHA1M&ab_channel=TiffanyPoon">
+                                    <span class="piece-genre">🎼 Classical</span>
+                                    <span class="piece-name">Kreisler - "Liebesleid" (Love's Sorrow)</span>
+                                </div>
+                                <div class="piece-item" data-piece="folk" data-url="https://www.youtube.com/watch?v=_AJwEFyWOzA&list=RD_AJwEFyWOzA&start_radio=1&ab_channel=BessieSmithVEVO">
+                                    <span class="piece-genre">🎶 Blues</span>
+                                    <span class="piece-name">Bessie Smith - Tain't Nobody's Bizness if I Do</span>
+                                </div>
+                                <div class="piece-item" data-piece="modern" data-url="https://www.youtube.com/watch?v=jvipPYFebWc&list=RDjvipPYFebWc&start_radio=1&ab_channel=LindseyStirling">
+                                    <span class="piece-genre">🎵 Modern</span>
+                                    <span class="piece-name">Lindsey Stirling - Roundtable Rival</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- coding hobby card -->
+            <div class="hobby-card" data-hobby="coding">
+                <div class="hobby-icon animated-icon">💻</div>
+                <h4>Coding Projects</h4>
+                <p>Building solutions and learning new technologies</p>
+                <div class="hobby-content" id="codingContent">
+                    <div class="hobby-details">
+                        <h5>Current Focus:</h5>
+                        <div class="coding-progress">
+                            <div class="progress-item">
+                                <span class="tech-name">C++</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-progress="85"></div>
+                                </div>
+                                <span class="progress-percent">85%</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="tech-name">SQL</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-progress="85"></div>
+                                </div>
+                                <span class="progress-percent">85%</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="tech-name">Python</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-progress="75"></div>
+                                </div>
+                                <span class="progress-percent">75%</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="tech-name">JavaScript</span>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-progress="70"></div>
+                                </div>
+                                <span class="progress-percent">70%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- github hobby card -->
+            <div class="hobby-card" data-hobby="github">
+                <div class="hobby-icon animated-icon">🌐</div>
+                <h4>GitHub Projects</h4>
+                <p>Selected projects with descriptions and repositories</p>
+                <div class="hobby-content" id="githubContent">
+                    <div class="hobby-details">
+                        <div class="github-project-card">
+                            <h5><a href="https://github.com/IlinaDim/SQL_Database" target="_blank">SQL Database Project</a></h5>
+                            <p>
+                                SQL_Database is a C++ console application that emulates a simple SQL database engine using plain text files.
+                                It allows users to execute basic SQL-like commands to create tables, insert data, query data (including filtering and simple joins), 
+                                and describe table schemas — all without requiring an external database engine.
+                            </p>
+                        </div>
+
+                        <div class="github-project-card">
+                            <h5><a href="https://github.com/IlinaDim/First-Website" target="_blank">First Website Project</a></h5>
+                            <h5><a href="https://storm.cis.fordham.edu/~idimitrov2/" target="_blank">Go to Website</a></h5>
+                            <p>
+                                This project was created as the final assignment for my CISC 1400 Discrete Structures class, marking my first experience building a website with HTML.
+                                I designed it around personal stories and interests, which made the learning process more enjoyable and meaningful.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript for all interactive features -->
+<script>
+//wait for page to load before initializing features
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('About page JavaScript loading...');
+    
+    /* interactive hobby showcase */
+    //func handle hobby card interactions
+    function setupHobbyInteractions() {
+        const hobbyCards = document.querySelectorAll('.hobby-card');
+        
+        hobbyCards.forEach(card => {
+            const hobbyType = card.dataset.hobby;
+            const hobbyContent = card.querySelector('.hobby-content');
+            
+            //add click event to each hobby card
+            card.addEventListener('click', () => {
+                //close all other hobby cards first
+                hobbyCards.forEach(otherCard => {
+                    if (otherCard !== card) {
+                        otherCard.classList.remove('active');
+                    }
+                });
+                
+                //toggle clicked card
+                card.classList.toggle('active');
+                
+                //handle specific hobby interactions
+                if (card.classList.contains('active')) {
+                    handleHobbySpecificActions(hobbyType);
+                }
+                
+                console.log(`${hobbyType} hobby card clicked`);
+            });
+        });
+    }
+    
+    //func handle specific actions for each hobby
+    function handleHobbySpecificActions(hobbyType) {
+        switch(hobbyType) {
+            case 'violin':
+                handleViolinInteraction();
+                break;
+            case 'hiking':
+                animateHikingStats();
+                break;
+            case 'coding':
+                animateProgressBars();
+                break;
+            case 'reading':
+                animateBookCovers();
+                break;
+        }
+    }
+    
+    /* violin icon animations */
+    function handleViolinInteraction() {
+    const playBtn = document.getElementById('playBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const nowPlaying = document.getElementById('nowPlaying');
+    const visualizer = document.getElementById('audioVisualizer');
+    const pieceItems = document.querySelectorAll('.piece-item');
+
+    let isPlaying = false;
+    let audioInterval;
+    let currentUrl = '';
+    let currentTitle = '';
+
+    /* Play selected YouTube link */
+    playBtn.addEventListener('click', () => {
+        if (!isPlaying && currentUrl) {
+            window.open(currentUrl, '_blank');
+            startVisualizer(currentTitle);
+        }
+    });
+
+    stopBtn.addEventListener('click', () => {
+        stopVisualizer();
+    });
+
+    pieceItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.stopPropagation(); // prevent card toggle
+            pieceItems.forEach(piece => piece.classList.remove('selected'));
+            item.classList.add('selected');
+
+            currentUrl = item.getAttribute('data-url');
+            currentTitle = item.querySelector('.piece-name').textContent;
+            nowPlaying.textContent = `Ready to play: ${currentTitle}`;
+        });
+    });
+
+    function startVisualizer(title) {
+        isPlaying = true;
+        nowPlaying.textContent = `Opening: ${title}`;
+        playBtn.textContent = '⏸️';
+
+        const bars = visualizer.querySelectorAll('.bar');
+        bars.forEach((bar, index) => {
+            bar.style.animationDelay = `${index * 0.1}s`;
+            bar.classList.add('active');
+        });
+
+        audioInterval = setTimeout(() => {
+            stopVisualizer();
+        }, 5000);
+    }
+
+    function stopVisualizer() {
+        isPlaying = false;
+        nowPlaying.textContent = 'Click to play sample';
+        playBtn.textContent = '▶️';
+
+        const bars = visualizer.querySelectorAll('.bar');
+        bars.forEach(bar => bar.classList.remove('active'));
+
+        clearTimeout(audioInterval);
+    }
+}
+		
+    
+    /* hicking stats animation */
+    function animateHikingStats() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.dataset.target);
+            const duration = 2000; //2 seconds
+            const increment = target / (duration / 50); //update every 50ms
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                stat.textContent = Math.floor(current);
+            }, 50);
+        });
+        
+        console.log('Hiking stats animation started');
+    }
+    
+    /* progress animation bar */
+    function animateProgressBars() {
+        const progressFills = document.querySelectorAll('.progress-fill');
+
+        progressFills.forEach((fill, index) => {
+            const targetProgress = parseInt(fill.dataset.progress);
+
+            //delay each bar animation slightly
+            setTimeout(() => {
+                fill.style.width = `${targetProgress}%`;
+            }, index * 200);
+        });
+
+        console.log('Progress bars animation started');
+    }
+
+
+
+    /* book covers animation */
+    function animateBookCovers() {
+        const bookCovers = document.querySelectorAll('.book-cover');
+        
+        bookCovers.forEach((cover, index) => {
+            setTimeout(() => {
+                cover.style.transform = 'rotateY(360deg) scale(1.1)';
+                
+                //reset after animation
+                setTimeout(() => {
+                    cover.style.transform = 'rotateY(0deg) scale(1)';
+                }, 600);
+            }, index * 300);
+        });
+        
+        console.log('Book covers animation started');
+    }
+    
+    /* anmated icons sys. */
+    function setupAnimatedIcons() {
+        const animatedIcons = document.querySelectorAll('.animated-icon');
+        
+        //add hover effects to all animated icons
+        animatedIcons.forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'scale(1.3) rotate(10deg)';
+            });
+            
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+        
+        //add pulse animation
+        setInterval(() => {
+            animatedIcons.forEach((icon, index) => {
+                setTimeout(() => {
+                    icon.classList.add('pulse');
+                    setTimeout(() => {
+                        icon.classList.remove('pulse');
+                    }, 600);
+                }, index * 500);
+            });
+        }, 8000); //pulse every 8 seconds
+        
+        console.log('Animated icons initialized');
+    }
+    
+    /* scroll animations */
+    function setupScrollAnimations() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+        
+        //observe all hobby cards for entrance animation
+        const hobbyCards = document.querySelectorAll('.hobby-card');
+        hobbyCards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        console.log('Scroll animations initialized');
+    }
+    
+    /* initialize all features */
+    //set up hobby card interactions
+    setupHobbyInteractions();
+    
+    //initialize animated icons
+    setupAnimatedIcons();
+    
+    //set up scroll animations
+    setupScrollAnimations();
+    
+    console.log('All About page features initialized successfully!');
+});
+</script>
+
+{% endblock %}

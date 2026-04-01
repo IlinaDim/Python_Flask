@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+
+{% block title %}Resume{% endblock %}
+
+{% block content %}
+    <h2>My Resume</h2>
+    
+    <!-- education section -->
+        <div class="resume-section">
+            <h3 class="section-header" onclick="toggleSection('education')">
+                Education
+                <span class="toggle-icon" id="education-icon">▼</span>
+            </h3>
+            <div class="section-content" id="education">
+                <div class="resume-item" data-hover="Graduated with honors, participated in computer science club">
+                    <div class="item-header">
+                        <strong>Undergraduate in Computer Science</strong>
+                        <span class="date">2022-2026</span>
+                    </div>
+                    <div class="item-details">Fordham University</div>
+                    <div class="hover-details">Currently pursuing degree with focus on software development and data structures</div>
+                </div>
+                
+                <div class="resume-item" data-hover="Strong foundation in mathematics and science">
+                    <div class="item-header">
+                        <strong>High School Diploma</strong>
+                        <span class="date">2018-2022</span>
+                    </div>
+                    <div class="item-details">Tuckahoe High School</div>
+                    <div class="hover-details">Completed with strong academic performance in STEM subjects</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- skills section -->
+        <div class="resume-section">
+            <h3 class="section-header" onclick="toggleSection('skills')">
+                Skills
+                <span class="toggle-icon" id="skills-icon">▼</span>
+            </h3>
+            <div class="section-content" id="skills">
+                <div class="skills-category">
+                    <div class="resume-item" data-hover="Object-oriented programming, data structures, algorithms">
+                        <div class="item-header">
+                            <strong>Programming Languages</strong>
+                        </div>
+                        <div class="item-details">C++, Python, HTML/CSS, SQL</div>
+                        <div class="hover-details">Proficient in multiple programming paradigms and database management</div>
+                    </div>
+                    
+                    <div class="resume-item" data-hover="Web development, API creation, template rendering">
+                        <div class="item-header">
+                            <strong>Frameworks</strong>
+                        </div>
+                        <div class="item-details">Flask</div>
+                        <div class="hover-details">Experience building web applications with Python Flask framework</div>
+                    </div>
+                    
+                    <div class="resume-item" data-hover="Version control, code editing, development environment setup">
+                        <div class="item-header">
+                            <strong>Tools</strong>
+                        </div>
+                        <div class="item-details">Git, VS Code</div>
+                        <div class="hover-details">Experienced with version control and modern development environments</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- experience section -->
+        <div class="resume-section">
+            <h3 class="section-header" onclick="toggleSection('experience')">
+                Experience
+                <span class="toggle-icon" id="experience-icon">▼</span>
+            </h3>
+            <div class="section-content" id="experience">
+                <div class="resume-item" data-hover="Troubleshooting computers, setting up WiFi, helping residents with technology">
+                    <div class="item-header">
+                        <strong>Tech Maintenance Intern</strong>
+                        <span class="date">Summer 2022</span>
+                    </div>
+                    <div class="item-details">
+                        <div class="company-info">Fountains at Rivervue - Tuckahoe, NY</div>
+                        <div class="contact-info">1 Rivervue Pl, (914)477-2066</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Worked on basic tech maintenance at retirement home</p>
+                        <div class="expandable-content">
+                            <ul>
+                                <li>Assisted residents with computer and tablet troubleshooting</li>
+                                <li>Maintained WiFi networks and internet connectivity</li>
+                                <li>Set up new devices for residents</li>
+                                <li>Provided patient, friendly technical support to elderly users</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hover-details">Gained experience in customer service and technical problem-solving in healthcare environment</div>
+                </div>
+
+                <div class="resume-item" data-hover="Created educational materials, supported mental health initiatives, worked with healthcare professionals">
+                    <div class="item-header">
+                        <strong>Volunteer</strong>
+                        <span class="date">2020-2022</span>
+                    </div>
+                    <div class="item-details">
+                        <div class="company-info">Lifestance Health</div>
+                        <div class="contact-info">(914)652-6155</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Assisted in making worksheets/games for patients to practice emotional regulation</p>
+                        <div class="expandable-content">
+                            <ul>
+                                <li>Designed interactive worksheets for therapy sessions</li>
+                                <li>Created educational games focused on emotional regulation techniques</li>
+                                <li>Collaborated with mental health professionals to develop age-appropriate materials</li>
+                                <li>Supported patient engagement through creative learning tools</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hover-details">Developed skills in educational content creation and understanding of mental health support</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        
+        //section toggle functionality
+        //this function handles expanding and collapsing resume sections
+        function toggleSection(sectionId) {
+            //get content div and toggle icon for this section
+            const content = document.getElementById(sectionId);
+            const icon = document.getElementById(sectionId + '-icon');
+            
+            //check if section is currently visible or hidden
+            if (content.style.display === 'none') {
+                //if hidden, show section with a smooth slide-down effect
+                content.style.display = 'block';
+                //change arrow to point down (section is now open)
+                icon.textContent = '▼';
+                //add a CSS class for smooth animation
+                content.classList.add('expanding');
+                //remove animation class after animation completes
+                setTimeout(() => {
+                    content.classList.remove('expanding');
+                }, 300);
+            } else {
+                //if visible, hide section with a smooth slide-up effect
+                content.classList.add('collapsing');
+                //change arrow to point right (section is now closed)
+                icon.textContent = '▶';
+                //after animation completes, fully hide the element
+                setTimeout(() => {
+                    content.style.display = 'none';
+                    content.classList.remove('collapsing');
+                }, 300);
+            }
+        }
+
+        //hover details functions
+        //this code runs when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            //find all resume items that have hover details
+            const resumeItems = document.querySelectorAll('.resume-item[data-hover]');
+            
+            //add event listeners to each resume item
+            resumeItems.forEach(item => {
+                //when mouse enters item, show hover details
+                item.addEventListener('mouseenter', function() {
+                    //find hover details element within this item
+                    const hoverDetails = this.querySelector('.hover-details');
+                    if (hoverDetails) {
+                        //make hover details visible with smooth fade-in
+                        hoverDetails.style.opacity = '1';
+                        hoverDetails.style.transform = 'translateY(0)';
+                    }
+                });
+                
+                //when mouse leaves the item, hide hover details
+                item.addEventListener('mouseleave', function() {
+                    //find hover details element within this item
+                    const hoverDetails = this.querySelector('.hover-details');
+                    if (hoverDetails) {
+                        //hide hover details with smooth fade-out
+                        hoverDetails.style.opacity = '0';
+                        hoverDetails.style.transform = 'translateY(-10px)';
+                    }
+                });
+            });
+        });
+
+        //expandable content functions
+        //handles detailed job descriptions that can be expanded
+        document.addEventListener('DOMContentLoaded', function() {
+            //find all job descriptions that have expandable content
+            const jobDescriptions = document.querySelectorAll('.job-description');
+            
+            jobDescriptions.forEach(description => {
+                //find expandable content within this job description
+                const expandableContent = description.querySelector('.expandable-content');
+                if (expandableContent) {
+                    //create a "Show More" button
+                    const toggleButton = document.createElement('button');
+                    toggleButton.textContent = 'Show Details';
+                    toggleButton.className = 'expand-btn';
+                    
+                    //add the button after the main job description text
+                    const mainText = description.querySelector('p');
+                    mainText.parentNode.insertBefore(toggleButton, expandableContent);
+                    
+                    //initially hide expandable content
+                    expandableContent.style.display = 'none';
+                    
+                    //add click event to toggle expandable content
+                    toggleButton.addEventListener('click', function(e) {
+                        //prevent click from affecting parent elements
+                        e.stopPropagation();
+                        
+                        //check if content is currently hidden/visible
+                        if (expandableContent.style.display === 'none') {
+                            //show content
+                            expandableContent.style.display = 'block';
+                            toggleButton.textContent = 'Show Less';
+                            //add smooth slide-down animation
+                            expandableContent.classList.add('expanding');
+                            setTimeout(() => {
+                                expandableContent.classList.remove('expanding');
+                            }, 300);
+                        } else {
+                            //hide content
+                            expandableContent.classList.add('collapsing');
+                            toggleButton.textContent = 'Show Details';
+                            //after animation, fully hide element
+                            setTimeout(() => {
+                                expandableContent.style.display = 'none';
+                                expandableContent.classList.remove('collapsing');
+                            }, 300);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+{% endblock %} 

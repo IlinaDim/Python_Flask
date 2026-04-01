@@ -1,0 +1,279 @@
+<!-- templates/index.html -->
+
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <!-- hero section w/ parallax background -->
+    <div class="hero-section" id="heroSection">
+        <div class="parallax-bg" id="parallaxBg"></div>
+        <div class="hero-content">
+            <!-- time-based greeting -->
+            <h2 id="timeGreeting" class="time-greeting">Good Morning!</h2>
+            
+            <!-- typing animation container -->
+            <div class="typing-container">
+                <span class="typing-text" id="typingText"></span>
+                <span class="cursor" id="cursor">|</span>
+            </div>
+            
+            <!-- subtitle with fade-in animation -->
+            <p class="subtitle" id="subtitle">Explore the links above to learn more about me and my work.</p>
+        </div>
+    </div>
+
+    <!-- additional content sections for parallax effect -->
+    <div class="content-section" id="aboutPreview">
+        <div class="content-card">
+            <h3>About Me</h3>
+            <p>I'm passionate about technology, learning, and solving real-world problems through code. Currently studying Computer Science at Fordham University, I'm always eager to take on new challenges and expand my skillset.</p>
+            <a href="/about" class="cta-button">Learn More About Me</a>
+        </div>
+    </div>
+
+    <div class="content-section" id="skillsPreview">
+        <div class="content-card">
+            <h3>My Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-icon">🖥️</div>
+                    <h4>Programming</h4>
+                    <p>C++, Python, HTML/CSS, SQL</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🌐</div>
+                    <h4>Web Development</h4>
+                    <p>Flask, JavaScript, Responsive Design</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🛠️</div>
+                    <h4>Tools</h4>
+                    <p>Git, VS Code, Database Management</p>
+                </div>
+            </div>
+            <a href="/resume" class="cta-button">View My Resume</a>
+        </div>
+    </div>
+
+    <div class="content-section" id="contactPreview">
+        <div class="content-card">
+            <h3>Let's Connect</h3>
+            <p>I'm always interested in new opportunities and collaborations. Whether you have a project in mind or just want to chat about technology, feel free to reach out!</p>
+            <a href="/contact" class="cta-button">Get In Touch</a>
+        </div>
+    </div>
+
+    <!-- JavaScript for all interactive features -->
+    <script>
+        //wait page to load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Home page JavaScript loading...');
+            
+            //time based greeting func
+            function updateGreeting() {
+                const now = new Date();
+                const hour = now.getHours();
+                const greetingElement = document.getElementById('timeGreeting');
+                
+                let greeting;
+                let timeClass;
+                
+                if (hour >= 5 && hour < 12) {
+                    greeting = "Good Morning!";
+                    timeClass = "morning";
+                } else if (hour >= 12 && hour < 17) {
+                    greeting = "Good Afternoon!";
+                    timeClass = "afternoon";
+                } else if (hour >= 17 && hour < 21) {
+                    greeting = "Good Evening!";
+                    timeClass = "evening";
+                } else {
+                    greeting = "Good Night!";
+                    timeClass = "night";
+                }
+                
+                //update greeting text and add time-specific styling
+                greetingElement.textContent = greeting;
+                greetingElement.className = `time-greeting ${timeClass}`;
+                
+                console.log(`Updated greeting: ${greeting} (${hour}:00)`);
+            }
+            
+            //typing animation func
+            function startTypingAnimation() {
+                const typingElement = document.getElementById('typingText');
+                const cursor = document.getElementById('cursor');
+                
+                //array of messages to type out
+                const messages = [
+                    "Hello! I'm Ilina, a senior at Fordham.",
+                    "I'm a programmer and persistent learner.",
+                    "Welcome to my personal website!",
+                    "Let's build something amazing together!"
+                ];
+                
+                let messageIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                let isPaused = false;
+                
+                function typeMessage() {
+                    const currentMessage = messages[messageIndex];
+                    
+                    if (!isDeleting && !isPaused) {
+                        //typing forward
+                        typingElement.textContent = currentMessage.substring(0, charIndex + 1);
+                        charIndex++;
+                        
+                        if (charIndex === currentMessage.length) {
+                            //finished typing current message, pause before deleting
+                            isPaused = true;
+                            setTimeout(() => {
+                                isPaused = false;
+                                isDeleting = true;
+                            }, 2000); //pause for 2 seconds
+                        }
+                    } else if (isDeleting && !isPaused) {
+                        //deleting backward
+                        typingElement.textContent = currentMessage.substring(0, charIndex - 1);
+                        charIndex--;
+                        
+                        if (charIndex === 0) {
+                            //finished deleting, move to next message
+                            isDeleting = false;
+                            messageIndex = (messageIndex + 1) % messages.length;
+                        }
+                    }
+                    
+                    //set different speeds for typing vs deleting
+                    const speed = isDeleting ? 50 : 100;
+                    setTimeout(typeMessage, speed);
+                }
+                
+                //start the typing animation
+                typeMessage();
+                
+                //animate the cursor
+                setInterval(() => {
+                    cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+                }, 530);
+            }
+            
+            //parallax scrolling effect
+            function setupParallax() {
+                const parallaxBg = document.getElementById('parallaxBg');
+                const heroSection = document.getElementById('heroSection');
+                
+                function updateParallax() {
+                    const scrolled = window.pageYOffset;
+                    const heroHeight = heroSection.offsetHeight;
+                    
+                    //only apply parallax effect while hero section is visible
+                    if (scrolled < heroHeight) {
+                        //move background slower than scroll speed for parallax effect
+                        const parallaxSpeed = scrolled * 0.5;
+                        parallaxBg.style.transform = `translateY(${parallaxSpeed}px)`;
+                        
+                        //fade out hero content as user scrolls
+                        const heroContent = document.querySelector('.hero-content');
+                        const fadeOpacity = 1 - (scrolled / heroHeight);
+                        heroContent.style.opacity = Math.max(fadeOpacity, 0);
+                    }
+                }
+                
+                //listen for scroll events (with throttling for performance)
+                let ticking = false;
+                
+                function onScroll() {
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            updateParallax();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }
+                
+                window.addEventListener('scroll', onScroll);
+                console.log('Parallax scrolling initialized');
+            }
+            
+            //content section animation
+            function setupScrollAnimations() {
+                const contentSections = document.querySelectorAll('.content-section');
+                
+                function checkVisibility() {
+                    const windowHeight = window.innerHeight;
+                    const scrollTop = window.pageYOffset;
+                    
+                    contentSections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.offsetHeight;
+                        
+                        //check if section is in viewport
+                        if (scrollTop + windowHeight > sectionTop + 100 && 
+                            scrollTop < sectionTop + sectionHeight) {
+                            section.classList.add('visible');
+                        }
+                    });
+                }
+                
+                //check visibility on scroll
+                window.addEventListener('scroll', checkVisibility);
+                //check visibility on load
+                checkVisibility();
+                
+                console.log('Scroll animations initialized');
+            }
+            
+            //smooth scrolling b/w links
+            function setupSmoothScrolling() {
+                const links = document.querySelectorAll('a[href^="#"]');
+                
+                links.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+            }
+            
+            //initialize all features
+            
+            // 1.set up time-based greeting
+            updateGreeting();
+            // Update greeting every minute
+            setInterval(updateGreeting, 60000);
+            
+            // 2.start typing animation after a short delay
+            setTimeout(startTypingAnimation, 1000);
+            
+            // 3.set up parallax scrolling
+            setupParallax();
+            
+            // 4.content section animations
+            setupScrollAnimations();
+            
+            // 5.smooth scrolling
+            setupSmoothScrolling();
+            
+            // 6.fade in the subtitle after typing starts
+            setTimeout(() => {
+                const subtitle = document.getElementById('subtitle');
+                subtitle.style.opacity = '1';
+                subtitle.style.transform = 'translateY(0)';
+            }, 2000);
+            
+            console.log('All home page features initialized successfully!');
+        });
+    </script>
+{% endblock %}

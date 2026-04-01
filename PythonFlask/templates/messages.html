@@ -1,0 +1,27 @@
+<!-- templates/messages.html -->
+{% extends "base.html" %}
+
+{% block title %}Messages{% endblock %}
+
+{% block content %}
+<h2>Messages Received</h2>
+
+<div class="messages-list-container">
+    {% if messages %}
+        <ul class="messages-list">
+            {% for message in messages %}
+                <li class="message-item">
+                    <div class="message-header">
+                        <strong>{{ message[1] }}</strong> <!-- name -->
+                        <span class="message-timestamp">{{ message[4] }}</span> <!-- Timestamp -->
+                    </div>
+                    <p><strong>Email:</strong> {{ message[2] }}</p> <!-- email -->
+                    <p>{{ message[3] }}</p> <!-- message -->
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No messages have been submitted yet.</p>
+    {% endif %}
+</div>
+{% endblock %}
