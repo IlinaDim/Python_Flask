@@ -1,5 +1,4 @@
 ## README.md -- personal Flask Webpage Project
-## ilina dimitrov torres -- ID: idimitrov2
 
 ## description
 This project was a challenging yet rewarding experience where I worked to integrate both Python (Flask) and Java elements into a unified web application. Learning two programming languages in a short time was difficult, especially while managing cookies, sessions, and databases across different components. One of the biggest challenges was keeping such a large codebase organized while implementing interactive front-end features and dynamic back-end functionality.
